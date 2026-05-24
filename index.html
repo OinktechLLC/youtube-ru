@@ -306,8 +306,10 @@
             backdrop-filter: blur(20px);
             border: 1px solid rgba(255, 255, 255, 0.1);
             z-index: 300;
-            max-width: 350px;
+            max-width: 500px;
             width: 90%;
+            max-height: 90vh;
+            overflow-y: auto;
         }
 
         .api-setup h3 {
@@ -361,6 +363,167 @@
             color: white;
         }
 
+        /* Region Selector */
+        .region-selector {
+            margin-bottom: 20px;
+        }
+
+        .region-selector label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .region-select {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            font-size: 14px;
+            cursor: pointer;
+        }
+
+        .region-select option {
+            background: #1a1a1a;
+            color: white;
+        }
+
+        /* Tutorial Section */
+        .tutorial-section {
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .tutorial-section h4 {
+            color: #ff0050;
+            margin-bottom: 15px;
+            font-size: 16px;
+        }
+
+        .tutorial-step {
+            margin-bottom: 15px;
+            padding: 10px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+        }
+
+        .tutorial-step strong {
+            color: #ff4081;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .tutorial-step p {
+            margin-bottom: 10px;
+            font-size: 13px;
+            line-height: 1.4;
+        }
+
+        .tutorial-link {
+            color: #ff4081;
+            text-decoration: underline;
+            cursor: pointer;
+        }
+
+        .screenshot-placeholder {
+            width: 100%;
+            height: 150px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 10px;
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        /* Player Script Selector */
+        .player-selector {
+            margin-top: 15px;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+        }
+
+        .player-selector label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .player-select {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            font-size: 14px;
+            cursor: pointer;
+        }
+
+        .player-select option {
+            background: #1a1a1a;
+            color: white;
+        }
+
+        .player-status {
+            margin-top: 10px;
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .player-status.online {
+            color: #4caf50;
+        }
+
+        .player-status.offline {
+            color: #f44336;
+        }
+
+        /* Frontend Instance Selector */
+        .instance-selector {
+            margin-top: 15px;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+        }
+
+        .instance-selector label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .instance-select {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            font-size: 14px;
+            cursor: pointer;
+        }
+
+        .instance-select option {
+            background: #1a1a1a;
+            color: white;
+        }
+
+        .instance-info {
+            margin-top: 10px;
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
         /* Responsive */
         @media (max-width: 480px) {
             .header {
@@ -410,10 +573,100 @@
         <div class="api-setup" id="apiSetup">
             <h3>Настройка YouTube API</h3>
             <p>Для работы приложения необходим API ключ YouTube Data API v3. Получите его в Google Cloud Console.</p>
+            
+            <!-- Region Selector -->
+            <div class="region-selector">
+                <label for="regionSelect">🌍 Выберите регион для просмотра:</label>
+                <select class="region-select" id="regionSelect" onchange="saveRegion()">
+                    <option value="RU">🇷🇺 Россия</option>
+                    <option value="CN">🇨🇳 Китай (КНР)</option>
+                    <option value="KZ">🇰🇿 Казахстан</option>
+                    <option value="BY">🇧🇾 Беларусь</option>
+                    <option value="UA">🇺🇦 Украина</option>
+                    <option value="US">🇺🇸 США</option>
+                    <option value="DE">🇩🇪 Германия</option>
+                    <option value="FR">🇫🇷 Франция</option>
+                    <option value="GB">🇬🇧 Великобритания</option>
+                    <option value="JP">🇯🇵 Япония</option>
+                    <option value="KR">🇰🇷 Южная Корея</option>
+                    <option value="IN">🇮🇳 Индия</option>
+                    <option value="BR">🇧🇷 Бразилия</option>
+                    <option value="TR">🇹🇷 Турция</option>
+                    <option value="UZ">🇺🇿 Узбекистан</option>
+                </select>
+            </div>
+
+            <!-- Frontend Instance Selector -->
+            <div class="instance-selector">
+                <label for="instanceSelect">🎬 Frontend инстанс (для обхода блокировок):</label>
+                <select class="instance-select" id="instanceSelect" onchange="saveInstance()">
+                    <option value="inv.thepixora.com">inv.thepixora.com (рекомендуется)</option>
+                    <option value="yewtu.be">yewtu.be</option>
+                    <option value="vid.puffyan.us">vid.puffyan.us</option>
+                    <option value="invidious.io">invidious.io</option>
+                    <option value="inv.riverside.rocks">inv.riverside.rocks</option>
+                </select>
+                <div class="instance-info">Если один инстанс не работает, переключитесь на другой</div>
+            </div>
+
+            <!-- Player Script Selector -->
+            <div class="player-selector">
+                <label for="playerSelect">▶️ Плеер (если один не работает, выберите другой):</label>
+                <select class="player-select" id="playerSelect" onchange="savePlayer()">
+                    <option value="0">OinkTechLLC (по умолчанию)</option>
+                    <option value="1">OinkTechLtd</option>
+                    <option value="2">twixoffltdco</option>
+                </select>
+                <div class="player-status online" id="playerStatus">● Статус: Проверка...</div>
+            </div>
+            
             <input type="text" class="api-input" id="apiKeyInput" placeholder="Введите ваш API ключ">
             <div class="api-buttons">
                 <button class="api-btn primary" onclick="saveApiKey()">Сохранить</button>
                 <button class="api-btn secondary" onclick="showDemo()">Демо режим</button>
+            </div>
+
+            <!-- Tutorial Section -->
+            <div class="tutorial-section">
+                <h4>📚 Подробный туториал: Как получить API ключ Google</h4>
+                
+                <div class="tutorial-step">
+                    <strong>Шаг 1: Откройте Google Cloud Console</strong>
+                    <p>Перейдите по ссылке: <a href="https://console.cloud.google.com/" target="_blank" class="tutorial-link">https://console.cloud.google.com/</a></p>
+                    <div class="screenshot-placeholder">📸 Скриншот: Главная страница Google Cloud Console</div>
+                </div>
+
+                <div class="tutorial-step">
+                    <strong>Шаг 2: Создайте новый проект</strong>
+                    <p>Нажмите "Создать проект" (Create Project) в верхней панели. Введите имя проекта, например "YouTube App" и нажмите "Создать".</p>
+                    <div class="screenshot-placeholder">📸 Скриншот: Кнопка создания нового проекта</div>
+                </div>
+
+                <div class="tutorial-step">
+                    <strong>Шаг 3: Включите YouTube Data API v3</strong>
+                    <p>В меню слева выберите "API и службы" → "Библиотека". Найдите "YouTube Data API v3" и нажмите "Включить".</p>
+                    <div class="screenshot-placeholder">📸 Скриншот: Страница YouTube Data API с кнопкой "Включить"</div>
+                </div>
+
+                <div class="tutorial-step">
+                    <strong>Шаг 4: Создайте учетные данные (API ключ)</strong>
+                    <p>Перейдите в "API и службы" → "Учетные данные". Нажмите "Создать учетные данные" → "API ключ".</p>
+                    <div class="screenshot-placeholder">📸 Скриншот: Меню создания API ключа</div>
+                </div>
+
+                <div class="tutorial-step">
+                    <strong>Шаг 5: Скопируйте API ключ</strong>
+                    <p>Появится окно с вашим API ключом. Скопируйте его и вставьте в поле выше. Нажмите "Сохранить".</p>
+                    <div class="screenshot-placeholder">📸 Скриншот: Окно с созданным API ключом</div>
+                </div>
+
+                <div class="tutorial-step">
+                    <strong>⚠️ Важно для России, КНР и других стран:</strong>
+                    <p>• YouTube заблокирован в некоторых странах. Используйте выбранный frontend инстанс для обхода блокировок.</p>
+                    <p>• Если один плеер не работает, переключитесь на другой в выпадающем списке.</p>
+                    <p>• API ключ бесплатен, но имеет лимиты (10,000 запросов в день).</p>
+                    <p>• Для ограничения доступа к ключу настройте restriction в Google Cloud Console.</p>
+                </div>
             </div>
         </div>
     </div>
@@ -422,15 +675,23 @@
         class TikTokClone {
             constructor() {
                 this.apiKey = localStorage.getItem('youtube_api_key') || '';
+                this.region = localStorage.getItem('youtube_region') || 'RU';
+                this.instance = localStorage.getItem('youtube_instance') || 'inv.thepixora.com';
+                this.playerIndex = parseInt(localStorage.getItem('youtube_player')) || 0;
                 this.currentVideos = [];
                 this.currentIndex = 0;
                 this.searchType = 'video';
                 this.isLoading = false;
-                
+
                 this.init();
             }
 
             init() {
+                // Load saved settings
+                document.getElementById('regionSelect').value = this.region;
+                document.getElementById('instanceSelect').value = this.instance;
+                document.getElementById('playerSelect').value = this.playerIndex;
+                
                 if (!this.apiKey) {
                     this.showApiSetup();
                 } else {
@@ -439,6 +700,7 @@
                 }
 
                 this.setupEventListeners();
+                this.checkPlayerStatus();
             }
 
             showApiSetup() {
@@ -519,7 +781,7 @@
                 
                 try {
                     const response = await fetch(
-                        `https://www.googleapis.com/youtube/v3/videos?part=snippet,statistics&chart=mostPopular&regionCode=RU&maxResults=50&videoCategoryId=10&key=${this.apiKey}`
+                        `https://www.googleapis.com/youtube/v3/videos?part=snippet,statistics&chart=mostPopular&regionCode=${this.region}&maxResults=50&videoCategoryId=10&key=${this.apiKey}`
                     );
 
                     if (!response.ok) {
@@ -646,11 +908,14 @@
                     const viewCount = this.formatNumber(statistics.viewCount || 0);
                     const likeCount = this.formatNumber(statistics.likeCount || 0);
                     
+                    // Use Invidious instance for embed (for regions with YouTube blocks)
+                    const embedUrl = `https://${this.instance}/embed`;
+                    
                     return `
                         <div class="video-item" data-index="${index}">
                             <iframe 
                                 class="video-iframe" 
-                                src="https://www.youtube.com/embed/${videoId}?autoplay=${index === 0 ? 1 : 0}&mute=1&controls=1&rel=0&modestbranding=1"
+                                src="${embedUrl}/${videoId}?autoplay=${index === 0 ? 1 : 0}&mute=1&controls=1&rel=0&modestbranding=1"
                                 frameborder="0" 
                                 allowfullscreen
                                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture">
@@ -786,6 +1051,35 @@
                     timeout = setTimeout(later, wait);
                 };
             }
+
+            checkPlayerStatus() {
+                const playerScripts = [
+                    'https://cdn.jsdelivr.net/gh/OinkTechLLC/cdnplayerjs@main/playerjs.js',
+                    'https://cdn.jsdelivr.net/gh/OinkTechLtd/cdnplayerjs@main/playerjs.js',
+                    'https://cdn.jsdelivr.net/gh/twixoffltdco/cdnplayerjs@main/playerjs.js'
+                ];
+                
+                const statusEl = document.getElementById('playerStatus');
+                if (statusEl) {
+                    statusEl.textContent = '● Статус: Проверка...';
+                    statusEl.className = 'player-status';
+                    
+                    // Simple check - just update based on selected player
+                    const selectedIndex = this.playerIndex || 0;
+                    const scriptUrl = playerScripts[selectedIndex];
+                    
+                    // Try to load the script
+                    fetch(scriptUrl, { method: 'HEAD' })
+                        .then(() => {
+                            statusEl.textContent = '● Статус: Работает';
+                            statusEl.className = 'player-status online';
+                        })
+                        .catch(() => {
+                            statusEl.textContent = '● Статус: Может быть недоступен';
+                            statusEl.className = 'player-status offline';
+                        });
+                }
+            }
         }
 
         // Global functions for HTML onclick handlers
@@ -814,6 +1108,31 @@
 
         function showDemo() {
             alert('Для полной функциональности необходим YouTube API ключ. Получите его на https://console.cloud.google.com/');
+        }
+
+        function saveRegion() {
+            const region = document.getElementById('regionSelect').value;
+            localStorage.setItem('youtube_region', region);
+            app.region = region;
+            if (app.apiKey) {
+                app.loadTrendingVideos();
+            }
+        }
+
+        function saveInstance() {
+            const instance = document.getElementById('instanceSelect').value;
+            localStorage.setItem('youtube_instance', instance);
+            app.instance = instance;
+            if (app.apiKey) {
+                app.loadTrendingVideos();
+            }
+        }
+
+        function savePlayer() {
+            const playerIndex = parseInt(document.getElementById('playerSelect').value);
+            localStorage.setItem('youtube_player', playerIndex.toString());
+            app.playerIndex = playerIndex;
+            app.checkPlayerStatus();
         }
 
         // Initialize app
